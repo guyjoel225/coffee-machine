@@ -1,5 +1,29 @@
 # Développement piloté par les tests (TDD)
 
+
+Les 5 itérations du Coffee Machine
+1. Faire des boissons ✅
+Traduire une commande (boisson + sucre) en message du protocole : T:1:0, H::, C:2:0, et M:texte pour un message.
+Leçon : le cycle rouge → vert → refactor, et la triangulation qui force à généraliser au lieu d’énumérer.
+
+2. Se faire payer ✅
+Thé 40, café 60, chocolat 50 centimes : on sert au montant exact, sinon un message indique ce qui manque ou exige l’appoint.
+Leçon : compter en centimes entiers, ajouter sans casser (serve à côté de l’existant), et un test peut être faux.
+
+3. Extra chaud ✅
+Jus d’orange (60 centimes, O) et option extra chaud (Th, Ch, Hh), avec refus du jus d’orange chaud avant tout calcul de prix.
+Leçon : évolution additive (extraHot?), Record<Drink, ...> pour que le compilateur garantisse les tables.
+
+4. Gagner de l’argent ✅
+Une classe CoffeeMachine mémorise les ventes et fournit un rapport : nombre de boissons par type et total encaissé.
+Leçon : état et classe, copie défensive, et une décision explicite (served) plutôt que deviner à partir du texte.
+
+5. La pénurie ⏳
+Si une boisson est épuisée, la machine la refuse avec un message au client et envoie une alerte e-mail à la maintenance.
+Leçon : simuler des services externes avec vi.fn() (mocking) et vérifier qu’ils ont été appelés correctement.
+
+
+
 ## 1. Technologies utilisées
 
 Le projet repose sur les technologies suivantes :
