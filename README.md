@@ -208,6 +208,15 @@ Ces cas de test constituent une première base de travail. Les instructions atte
 |Café|0,60|60|
 |orange|0,60|60|
 
+
+## temperature de la boisson
+
+extraHot?:boolean
+
+si extraHot ===  true pour le thé on aura
+
+pour code Th:: avec avec la temperature extraHot
+
 ### Conclusion
 
 La configuration de l'environnement constitue la première étape du projet. Une fois TypeScript, Vitest et les scripts npm opérationnels, le développement peut commencer en appliquant systématiquement le cycle :

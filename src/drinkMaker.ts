@@ -1,6 +1,7 @@
 export type Order = {
   drink: 'tea' | 'coffee' | 'chocolate' | 'orange';
-  sugar: number
+  sugar: number,
+  extraHot?: false
 }
 
 const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H', 'orange': 'O'} as const
