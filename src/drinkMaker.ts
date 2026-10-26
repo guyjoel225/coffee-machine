@@ -27,6 +27,6 @@ export function serve(order:Order, money: number): string{
   
   const price = DRINK_MONEY[order.drink];
 
-   return money === price ? drinkMakerOrde(order): toDrinkMakerMessage(`Il manque ${price -  money} centimes`);
+   return money === price ? drinkMakerOrde(order): ( money > price? toDrinkMakerMessage("Votre argent est supérieur au montant (montant exact requis: 40 centimes)"):toDrinkMakerMessage(`Il manque ${price -  money} centimes`));
 }
 
