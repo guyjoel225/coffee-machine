@@ -34,7 +34,12 @@ describe("payer avant de commander", ()=>{
   it.each([
     { order: { drink: 'tea', sugar: 0 }, money: 40, command: 'T::' },
     { order: { drink: 'tea', sugar: 0 }, money: 10, command: 'M:Il manque 30 centimes' },
-    { order: { drink: 'tea', sugar: 0 }, money: 70, command: 'M:Votre argent est supérieur au montant (montant exact requis: 40 centimes)' },
+    { order: { drink: 'tea', sugar: 0 }, money: 70, command: 'M:Montant exact requis: 40 centimes'},
+    { order: { drink: 'coffee', sugar: 0 }, money: 60, command: 'C::'},
+{ order: { drink: 'coffee', sugar: 0 }, money: 20, command: 'M:Il manque 40 centimes' },
+{ order: { drink: 'coffee', sugar: 0 }, money: 80, command: 'M:Montant exact requis: 60 centimes' },
+{ order: { drink: 'chocolate', sugar: 0 }, money: 50, command: 'H::'},
+{ order: { drink: 'chocolate', sugar: 0 }, money: 30, command: 'M:Il manque 20 centimes' },
 
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes donne $command",({order,command, money})=>{
    expect(serve(order, money)).toBe(command);

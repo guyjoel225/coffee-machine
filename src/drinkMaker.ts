@@ -4,7 +4,7 @@ export type Order = {
 }
 
 const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
-const DRINK_MONEY = {tea: 40, coffee: 60, chocolate: 50}  as const
+const DRINK_PRICES = {tea: 40, coffee: 60, chocolate: 50}  as const
 
 export function drinkMakerOrde(order:Order): string{
 
@@ -25,8 +25,14 @@ export function toDrinkMakerMessage(message:string):string{
 
 export function serve(order:Order, money: number): string{
   
-  const price = DRINK_MONEY[order.drink];
+  const price = DRINK_PRICES[order.drink];
 
-   return money === price ? drinkMakerOrde(order): ( money > price? toDrinkMakerMessage("Votre argent est supérieur au montant (montant exact requis: 40 centimes)"):toDrinkMakerMessage(`Il manque ${price -  money} centimes`));
-}
+   if(money < price){
 
+    return toDrinkMakerMessage(`Il manque ${price - money} centimes`);
+   }
+   if(money > price){
+    return toDrinkMakerMessage(`Montant exact requis: ${price} centimes`)
+   }
+   return drinkMakerOrde(order)
+  }
