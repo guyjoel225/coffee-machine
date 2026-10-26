@@ -5,7 +5,7 @@ import {toDrinkMakerOrder, type Order} from '../src/drinkMaker';
 describe.each([
   {order:{drink: 'tea', sugar:0}, command: 'T::'},
   {order: {drink: 'coffee', sugar: 0}, command: 'C::'},
-  // {order: {drink: 'chocolate',sugar:0}, command: 'H::'}
+  {order: {drink: 'chocolate',sugar:0}, command: 'H::'}
 ] satisfies{order:Order, command:string} [])("La commade $order.drink ($command) envoyée au Drink maker", ({order, command})=>{
    
   it('Envoi de la commnde',()=>{
