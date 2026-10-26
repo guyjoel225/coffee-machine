@@ -8,8 +8,8 @@ describe.each([
   {order: {drink: 'chocolate',sugar:0}, command: 'H::'},
   { order: { drink: 'tea', sugar: 1 }, command: 'T:1:0' },
 ] satisfies{order:Order, command:string} [])("La commade $order.drink ($command) envoyée au Drink maker", ({order, command})=>{
-   
-  it(`commande de ${order.drink} validée`,()=>{
+   const message = order.sugar > 0 ? `avec sucre ${order.sugar}`: 'sans sucre';
+  it(`commande de ${order.drink} ${message} validée`,()=>{
 
     expect(MakerOrder(order)).toBe(command);
   })
