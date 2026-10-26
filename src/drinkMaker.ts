@@ -6,6 +6,7 @@ export type Order = {
 
 
 export function toDrinkMakerOrder(order:Order): string{
- 
-  return "T::"
+ if(order.drink === 'coffee') return "C::";
+
+  return "T::";
 }
