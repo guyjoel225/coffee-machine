@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { CoffeeMachine } from '../src/coffeeMachine'
 
 describe('Rapport des ventes', () => {
+
   it("une machine neuve n'a rien vendu", () => {
     const machine = new CoffeeMachine()
 
@@ -32,6 +33,17 @@ describe('Rapport des ventes', () => {
     sold: { tea: 2, coffee: 1, chocolate: 0, orange: 0 },
     total: 140,
   })
+
+ it("ne compte pas une commande refusée faute d'argent", () => {
+  const machine = new CoffeeMachine()
+
+  machine.order({ drink: 'tea', sugar: 0 }, 10)
+
+  expect(machine.report()).toEqual({
+    sold: { tea: 0, coffee: 0, chocolate: 0, orange: 0 },
+    total: 0,
+  })
+})  
 })
 })
 })
