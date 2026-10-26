@@ -217,6 +217,8 @@ si extraHot ===  true pour le thé on aura
 
 pour code Th:: avec avec la temperature extraHot
 
+- **`Record<Drink, number>`** : le compilateur exige une entrée par boisson, donc un prix ou un code oublié devient une erreur de compilation au lieu d'un `undefined` silencieux.
+- **Règle du jus d'orange avant le prix** : on refuse une commande impossible avant de parler d'argent, pour ne pas faire payer le client pour rien. Un test à 10 centimes fige cet ordre.
 ### Conclusion
 
 La configuration de l'environnement constitue la première étape du projet. Une fois TypeScript, Vitest et les scripts npm opérationnels, le développement peut commencer en appliquant systématiquement le cycle :

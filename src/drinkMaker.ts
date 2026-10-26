@@ -4,7 +4,7 @@ export type Order = {
   extraHot?: boolean
 }
 
-type Drink = Order['drink']
+export type Drink = Order['drink']
 
 const DRINK_CODES: Record<Drink, string> = { tea: 'T', coffee: 'C', chocolate: 'H', orange: 'O' }
 const DRINK_PRICES: Record<Drink, number> = { tea: 40, coffee: 60, chocolate: 50, orange: 60 }
@@ -33,3 +33,4 @@ export function serve(order: Order, money: number): string {
   }
   return drinkMakerOrde(order)
 }
+
