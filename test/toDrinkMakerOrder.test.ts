@@ -62,7 +62,7 @@ describe("payer avant de commander", ()=>{
 
     { order: { drink: 'tea', sugar: 0, extraHot: true }, money: 40, command: 'Th::' },
 
-    
+    { order: { drink: 'orange', sugar: 0, extraHot: true }, money: 60, command: "M:Le jus d'orange ne peut pas être servi chaud" },
 
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes $order.sugar sucre(s) donne $command",({order,command, money})=>{
    expect(serve(order, money)).toBe(command);
