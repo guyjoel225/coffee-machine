@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Options de base */
+    "target": "ES2022",                  // Version JavaScript générée
+    "module": "NodeNext",                // Gestionnaire de modules moderne pour Node
+    "moduleResolution": "NodeNext",      // Résolution des modules
+    "lib":["ES2022"],                        // Bibliothèques incluses pour le code 
+
+    /* Dossiers et chemins */
+    "rootDir": "./src",                  // Dossier contenant le code source (.ts)
+    "outDir": "./dist",                  // Dossier de sortie du code compilé (.js)
+    
+    /* Strict et sécurité du code */
+    "strict": true,                      // Active la vérification stricte des types
+    "esModuleInterop": true,             // Compatibilité avec les imports CommonJS
+    "strictNullChecks": true,            // Vérifie les valeurs nulles et indéfinies
+    "skipLibCheck": true,                // Accélère la compilation en sautant la vérification des .d.ts
+    "forceConsistentCasingInFileNames": true, // Vérifie la casse des fichiers
+    "noImplicitAny": true,               // Interdit le type "any" implicite
+    "types":["node"],                        // Types inclus pour Node.js
+
+    /* Avertissements et erreurs */
+
+    "noUnusedLocals": true,            // Avertit des variables locales inutilisées
+    "noUnusedParameters": true,        // Avertit des paramètres inutilisés
+    "noImplicitReturns": true,        // Avertit si une fonction ne retourne pas de valeur dans tous les chemins
+    "noFallthroughCasesInSwitch": true, // Avertit des cas de switch sans break
+    
+    /* Génération de code */
+    "sourceMap": true,                   // Génère des fichiers .map pour le débogage
+    "removeComments": true               // Supprime les commentaires dans le JS compilé
+  },
+  "include": ["src/**/*"],               // Fichiers à inclure dans le projet
+  "exclude": ["node_modules", "dist"]    // Fichiers/dossiers à ignorer
+}

@@ -1,0 +1,32 @@
+{
+  "name": "coffee-machine",
+  "version": "1.0.0",
+  "description": "- typescript - vitest - tsx  - express",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev":"tsx ./src/todrinkmakercommand.ts",
+    "test": "vitest",
+    "build":"tsc ",
+    "start": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.5",
+    "express": "^5.3.0",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
