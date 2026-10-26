@@ -10,9 +10,7 @@ export function MakerOrder(order:Order): string{
 
   
  const code  = DRINK_CODE[order.drink]
- if(order.sugar === 0){
-  
- }
+
 
  return `${code}::`;
 }
