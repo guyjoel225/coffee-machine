@@ -12,17 +12,24 @@ it.each([
   { order: { drink: 'tea', sugar: 1 }, command: 'T:1:0' },
   { order: { drink: 'coffee', sugar: 2 }, command: 'C:2:0' },
   {order:{drink: 'orange', sugar: 0}, command:'O::'},
-
-  { order: { drink: 'tea', sugar: 0, extraHot: true }, command: 'Th::' },
-  { order: { drink: 'coffee', sugar: 2, extraHot: true }, command: 'Ch:2:0' },
-  { order: { drink: 'chocolate', sugar: 1, extraHot: true }, command: 'Hh:1:0' },
-  { order: { drink: 'tea', sugar: 0, extraHot: false }, command: 'T::' },
 ] satisfies{order:Order, command:string} [])("$order.drink avec $order.sugar sucre(s) donne $command", ({order, command})=>{
   
 
     expect(drinkMakerOrde(order)).toBe(command);
   
 })
+
+it.each([
+  { order: { drink: 'tea', sugar: 0, extraHot: true }, command: 'Th::' },
+  { order: { drink: 'coffee', sugar: 2, extraHot: true }, command: 'Ch:2:0' },
+  { order: { drink: 'chocolate', sugar: 1, extraHot: true }, command: 'Hh:1:0' },
+  { order: { drink: 'tea', sugar: 0, extraHot: false }, command: 'T::' },
+] satisfies { order: Order; command: string }[])(
+  '$order.drink extra chaud = $order.extraHot avec $order.sugar sucre(s) donne $command',
+  ({ order, command }) => {
+    expect(drinkMakerOrde(order)).toBe(command)
+  },
+)
 
 it('transmet un message au client', () => {
   expect(toDrinkMakerMessage("Pas assez d'argent")).toBe("M:Pas assez d'argent")
@@ -54,6 +61,8 @@ describe("payer avant de commander", ()=>{
     {order: {drink: 'orange', sugar:0}, money:40, command: 'M:Il manque 20 centimes'},
 
     { order: { drink: 'tea', sugar: 0, extraHot: true }, money: 40, command: 'Th::' },
+
+    
 
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes $order.sugar sucre(s) donne $command",({order,command, money})=>{
    expect(serve(order, money)).toBe(command);

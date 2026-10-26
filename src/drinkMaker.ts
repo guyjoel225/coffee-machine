@@ -1,18 +1,17 @@
 export type Order = {
   drink: 'tea' | 'coffee' | 'chocolate' | 'orange';
   sugar: number,
-  extraHot?: false
+  extraHot?: boolean
 }
 
 const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H', 'orange': 'O'} as const
 const DRINK_PRICES = {tea: 40, coffee: 60, chocolate: 50, orange: 60}  as const
 
 export function drinkMakerOrde(order:Order): string{
-
   
- const code  = DRINK_CODES[order.drink]
- 
- 
+const code = `${DRINK_CODES[order.drink]}${order.extraHot ? 'h' : ''}`
+  
+
  return  order.sugar > 0 ? `${code}:${order.sugar}:0`:`${code}::`;
 }
 
