@@ -3,11 +3,16 @@ export type Order = {
   sugar: number
 }
 
+const DRINK_CODE = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
 
 
-export function toDrinkMakerOrder(order:Order): string{
- if(order.drink === 'coffee') return "C::";
- if(order.drink === 'chocolate') return "H::";
+export function MakerOrder(order:Order): string{
 
-  return "T::";
+  
+ const code  = DRINK_CODE[order.drink]
+ if(order.sugar === 0){
+  
+ }
+
+ return `${code}::`;
 }
