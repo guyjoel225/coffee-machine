@@ -196,6 +196,7 @@ Les tests suivants servent à vérifier la transformation d'une commande en inst
 | 4 | Thé avec un sucre | `T:1:0` |
 | 5 | Café avec deux sucres | `C:2:0` |
 | 6 | Envoi d'un message au client | `M:Bonjour` |
+| 7 | Jus d'orange sans sucre |O::|
 
 Ces cas de test constituent une première base de travail. Les instructions attendues doivent être vérifiées avec les spécifications de l'exercice.
 
@@ -205,6 +206,7 @@ Ces cas de test constituent une première base de travail. Les instructions atte
 |Thé|0,40|40|
 |Chocolat|0,50|50|
 |Café|0,60|60|
+|orange|0,60|60|
 
 ### Conclusion
 

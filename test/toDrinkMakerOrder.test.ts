@@ -11,6 +11,7 @@ it.each([
   {order: {drink: 'chocolate',sugar:0}, command: 'H::'},
   { order: { drink: 'tea', sugar: 1 }, command: 'T:1:0' },
   { order: { drink: 'coffee', sugar: 2 }, command: 'C:2:0' },
+  {order:{drink: 'orange', sugar: 0}, command:'O::'}
 ] satisfies{order:Order, command:string} [])("$order.drink avec $order.sugar sucre(s) donne $command", ({order, command})=>{
   
 
@@ -42,8 +43,9 @@ describe("payer avant de commander", ()=>{
 { order: { drink: 'chocolate', sugar: 0 }, money: 30, command: 'M:Il manque 20 centimes' },
 {order: {drink: 'tea', sugar: 1}, money: 40, command:'T:1:0'},
 {order: {drink: 'tea', sugar: 2}, money: 40, command:'T:2:0'},
-{order: {drink: 'coffee', sugar: 1}, money: 60, command:'C:1:0'}
-
+{order: {drink: 'coffee', sugar: 1}, money: 60, command:'C:1:0'},
+{order: {drink: 'orange', sugar:0}, money:60, command: 'O::'},
+{order: {drink: 'orange', sugar:0}, money:40, command: 'M:Il manque 20 centimes'},
 
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes $order.sugar sucre(s) donne $command",({order,command, money})=>{
    expect(serve(order, money)).toBe(command);
