@@ -20,5 +20,18 @@ describe('Rapport des ventes', () => {
     sold: { tea: 1, coffee: 0, chocolate: 0, orange: 0 },
     total: 40,
   })
+
+  it('cumule plusieurs ventes', () => {
+  const machine = new CoffeeMachine()
+
+  machine.order({ drink: 'tea', sugar: 0 }, 40)
+  machine.order({ drink: 'tea', sugar: 1 }, 40)
+  machine.order({ drink: 'coffee', sugar: 0 }, 60)
+
+  expect(machine.report()).toEqual({
+    sold: { tea: 2, coffee: 1, chocolate: 0, orange: 0 },
+    total: 140,
+  })
+})
 })
 })

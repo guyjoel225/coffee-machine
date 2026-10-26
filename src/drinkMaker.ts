@@ -34,3 +34,7 @@ export function serve(order: Order, money: number): string {
   return drinkMakerOrde(order)
 }
 
+
+export function priceOf(drink: Drink): number {
+  return DRINK_PRICES[drink]
+}
