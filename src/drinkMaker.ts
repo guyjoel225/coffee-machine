@@ -6,6 +6,8 @@ export type Order = {
 
 export type Drink = Order['drink']
 
+export type Outcome = { served: boolean; command: string }
+
 const DRINK_CODES: Record<Drink, string> = { tea: 'T', coffee: 'C', chocolate: 'H', orange: 'O' }
 const DRINK_PRICES: Record<Drink, number> = { tea: 40, coffee: 60, chocolate: 50, orange: 60 }
 
@@ -18,23 +20,26 @@ export function toDrinkMakerMessage(message: string): string {
   return `M:${message}`
 }
 
-export function serve(order: Order, money: number): string {
+export function priceOf(drink: Drink): number {
+  return DRINK_PRICES[drink]
+}
+
+export function evaluate(order: Order, money: number): Outcome {
   if (order.drink === 'orange' && order.extraHot) {
-    return toDrinkMakerMessage("Le jus d'orange ne peut pas être servi chaud")
+    return { served: false, command: toDrinkMakerMessage("Le jus d'orange ne peut pas être servi chaud") }
   }
 
   const price = DRINK_PRICES[order.drink]
 
   if (money < price) {
-    return toDrinkMakerMessage(`Il manque ${price - money} centimes`)
+    return { served: false, command: toDrinkMakerMessage(`Il manque ${price - money} centimes`) }
   }
   if (money > price) {
-    return toDrinkMakerMessage(`Montant exact requis: ${price} centimes`)
+    return { served: false, command: toDrinkMakerMessage(`Montant exact requis: ${price} centimes`) }
   }
-  return drinkMakerOrde(order)
+  return { served: true, command: drinkMakerOrde(order) }
 }
 
-
-export function priceOf(drink: Drink): number {
-  return DRINK_PRICES[drink]
+export function serve(order: Order, money: number): string {
+  return evaluate(order, money).command
 }

@@ -1,4 +1,4 @@
-import { priceOf, serve, type Drink, type Order } from './drinkMaker'
+import { evaluate, priceOf, type Drink, type Order } from './drinkMaker'
 
 export type SalesReport = {
   sold: Record<Drink, number>
@@ -10,9 +10,14 @@ export class CoffeeMachine {
   private total = 0
 
   order(order: Order, money: number): string {
-    this.sold[order.drink] += 1
-    this.total += priceOf(order.drink)
-    return serve(order, money)
+    const outcome = evaluate(order, money)
+
+    if (outcome.served) {
+      this.sold[order.drink] += 1
+      this.total += priceOf(order.drink)
+    }
+
+    return outcome.command
   }
 
   report(): SalesReport {
