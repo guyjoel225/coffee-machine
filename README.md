@@ -199,6 +199,13 @@ Les tests suivants servent à vérifier la transformation d'une commande en inst
 
 Ces cas de test constituent une première base de travail. Les instructions attendues doivent être vérifiées avec les spécifications de l'exercice.
 
+## Les prix des boissons 
+
+|Boisson|prix en Euro|centime|
+|Thé|0,40|40|
+|Chocolat|0,50|50|
+|Café|0,60|60|
+
 ### Conclusion
 
 La configuration de l'environnement constitue la première étape du projet. Une fois TypeScript, Vitest et les scripts npm opérationnels, le développement peut commencer en appliquant systématiquement le cycle :
@@ -206,3 +213,5 @@ La configuration de l'environnement constitue la première étape du projet. Une
 **RED → GREEN → REFACTOR**
 
 Chaque comportement sera testé séparément avant d'être implémenté, puis le code sera amélioré sans compromettre les tests existants.
+
+

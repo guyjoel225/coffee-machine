@@ -1,8 +1,10 @@
 import {describe, expect, it} from 'vitest'
-import {toDrinkMakerMessage,drinkMakerOrde, type Order} from '../src/drinkMaker';
+import {toDrinkMakerMessage,drinkMakerOrde, type Order, serve} from '../src/drinkMaker';
 
 
 describe("Commande envoyée au Drink Maker", ()=>{
+
+  //test commande gratuite
 it.each([
   {order:{drink: 'tea', sugar:0}, command: 'T::'},
   {order: {drink: 'coffee', sugar: 0}, command: 'C::'},
@@ -19,4 +21,21 @@ it.each([
 it('transmet un message au client', () => {
   expect(toDrinkMakerMessage("Pas assez d'argent")).toBe("M:Pas assez d'argent")
 })
+
+
+})
+
+
+
+
+
+describe("payer avant de commander", ()=>{
+
+  it.each([
+    {order: {drink: 'tea', sugar: 0},command: 'T::', money: 40}
+  ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes donne $command",({order,command, money})=>{
+
+   expect(serve(order, money)).toBe(command);
+
+  })
 })
