@@ -39,9 +39,6 @@ it('transmet un message au client', () => {
 })
 
 
-
-
-
 describe("payer avant de commander", ()=>{
 
   it.each([
@@ -60,12 +57,19 @@ describe("payer avant de commander", ()=>{
     {order: {drink: 'orange', sugar:0}, money:60, command: 'O::'},
     {order: {drink: 'orange', sugar:0}, money:40, command: 'M:Il manque 20 centimes'},
 
-    { order: { drink: 'tea', sugar: 0, extraHot: true }, money: 40, command: 'Th::' },
-
-    { order: { drink: 'orange', sugar: 0, extraHot: true }, money: 60, command: "M:Le jus d'orange ne peut pas être servi chaud" },
-
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes $order.sugar sucre(s) donne $command",({order,command, money})=>{
    expect(serve(order, money)).toBe(command);
    
   })
+
+  it.each([
+  { order: { drink: 'tea', sugar: 0, extraHot: true }, money: 40, command: 'Th::' },
+  { order: { drink: 'orange', sugar: 0, extraHot: true }, money: 60, command: "M:Le jus d'orange ne peut pas être servi chaud" },
+  { order: { drink: 'orange', sugar: 0, extraHot: true }, money: 10, command: "M:Le jus d'orange ne peut pas être servi chaud" },
+] satisfies { order: Order; money: number; command: string }[])(
+  '$order.drink extra chaud = $order.extraHot avec $money centimes donne $command',
+  ({ order, money, command }) => {
+    expect(serve(order, money)).toBe(command)
+  },
+)
 })
