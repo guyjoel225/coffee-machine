@@ -34,5 +34,5 @@ export function serve(order:Order, money: number): string{
    if(money > price){
     return toDrinkMakerMessage(`Montant exact requis: ${price} centimes`)
    }
-   return drinkMakerOrde(order)
+   return 'T::';
   }
