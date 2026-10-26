@@ -8,6 +8,7 @@ it.each([
   {order: {drink: 'coffee', sugar: 0}, command: 'C::'},
   {order: {drink: 'chocolate',sugar:0}, command: 'H::'},
   { order: { drink: 'tea', sugar: 1 }, command: 'T:1:0' },
+  { order: { drink: 'coffee', sugar: 2 }, command: 'C:2:0' },
 ] satisfies{order:Order, command:string} [])("$order.drink avec $order.sugar sucre(s) donne $command", ({order, command})=>{
 
 
