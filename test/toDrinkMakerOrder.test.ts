@@ -32,10 +32,12 @@ it('transmet un message au client', () => {
 describe("payer avant de commander", ()=>{
 
   it.each([
-    {order: {drink: 'tea', sugar: 0},command: 'T::', money: 40}
+    { order: { drink: 'tea', sugar: 0 }, money: 40, command: 'T::' },
+    { order: { drink: 'tea', sugar: 0 }, money: 10, command: 'M:Il manque 30 centimes' },
+    { order: { drink: 'tea', sugar: 0 }, money: 70, command: 'M:Votre argent est supérieur au montant (montant exact requis: 40 centimes)' },
+
   ] satisfies {order:Order, command:string, money: number}[])("$order.drink avec $money centimes donne $command",({order,command, money})=>{
-
    expect(serve(order, money)).toBe(command);
-
+   
   })
 })

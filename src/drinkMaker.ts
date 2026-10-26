@@ -3,13 +3,8 @@ export type Order = {
   sugar: number
 }
 
-export type Detail = {
-
-  price: number;
-  command: string
-}
 const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
-
+const DRINK_MONEY = {tea: 40, coffee: 60, chocolate: 50}  as const
 
 export function drinkMakerOrde(order:Order): string{
 
@@ -29,6 +24,9 @@ export function toDrinkMakerMessage(message:string):string{
 
 
 export function serve(order:Order, money: number): string{
+  
+  const price = DRINK_MONEY[order.drink];
 
-   return '';
+   return money === price ? drinkMakerOrde(order): toDrinkMakerMessage(`Il manque ${price -  money} centimes`);
 }
+
