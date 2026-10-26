@@ -3,14 +3,14 @@ export type Order = {
   sugar: number
 }
 
-const DRINK_CODE = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
+const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
 
 
-export function MakerOrder(order:Order): string{
+export function drinkMakerOrde(order:Order): string{
 
   
- const code  = DRINK_CODE[order.drink]
-
+ const code  = DRINK_CODES[order.drink]
  
- return `${code}::`;
+ 
+ return  order.sugar > 0 ? `${code}:${order.sugar}:0`:`${code}::`;
 }
