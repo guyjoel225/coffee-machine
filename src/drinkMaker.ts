@@ -1,10 +1,10 @@
 export type Order = {
-  drink: 'tea' | 'coffee' | 'chocolate';
+  drink: 'tea' | 'coffee' | 'chocolate' | 'orange';
   sugar: number
 }
 
-const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H'} as const
-const DRINK_PRICES = {tea: 40, coffee: 60, chocolate: 50}  as const
+const DRINK_CODES = {tea: 'T', coffee: 'C', chocolate: 'H', 'orange': 'O'} as const
+const DRINK_PRICES = {tea: 40, coffee: 60, chocolate: 50, orange: 60}  as const
 
 export function drinkMakerOrde(order:Order): string{
 
