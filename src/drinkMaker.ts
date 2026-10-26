@@ -14,3 +14,10 @@ export function drinkMakerOrde(order:Order): string{
  
  return  order.sugar > 0 ? `${code}:${order.sugar}:0`:`${code}::`;
 }
+
+
+
+export function toDrinkMakerMessage(message:string):string{
+
+  return `M:${message}`;
+}

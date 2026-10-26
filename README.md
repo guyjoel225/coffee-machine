@@ -120,7 +120,8 @@ Dans la propriété `scripts` de `package.json`, ajouter les commandes suivantes
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "00": "tsx src/00-commande.ts"
+    "00": "tsx src/00-commande.ts",
+    "typecheck": "tsc --noEmit"
   }
 }
 ```

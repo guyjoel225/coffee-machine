@@ -2,13 +2,13 @@
   "compilerOptions": {
     /* Options de base */
     "target": "ES2022",                  // Version JavaScript générée
-    "module": "NodeNext",                // Gestionnaire de modules moderne pour Node
-    "moduleResolution": "NodeNext",      // Résolution des modules
+    "module": "ESNext",
+    "moduleResolution": "bundler",      // Résolution des modules
     "lib":["ES2022"],                        // Bibliothèques incluses pour le code 
 
     /* Dossiers et chemins */
-    "rootDir": "./src",                  // Dossier contenant le code source (.ts)
-    "outDir": "./dist",                  // Dossier de sortie du code compilé (.js)
+   // "rootDir": "./src",                  // Dossier contenant le code source (.ts)
+    //"outDir": "./dist",                  // Dossier de sortie du code compilé (.js)
     
     /* Strict et sécurité du code */
     "strict": true,                      // Active la vérification stricte des types
@@ -30,6 +30,6 @@
     "sourceMap": true,                   // Génère des fichiers .map pour le débogage
     "removeComments": true               // Supprime les commentaires dans le JS compilé
   },
-  "include": ["src/**/*"],               // Fichiers à inclure dans le projet
+  "include": ["src/**/*", "test"],               // Fichiers à inclure dans le projet
   "exclude": ["node_modules", "dist"]    // Fichiers/dossiers à ignorer
 }

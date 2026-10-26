@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest'
-import {drinkMakerOrde, type Order} from '../src/drinkMaker';
+import {toDrinkMakerMessage,drinkMakerOrde, type Order} from '../src/drinkMaker';
 
 
 describe("Commande envoyée au Drink Maker", ()=>{
@@ -10,10 +10,13 @@ it.each([
   { order: { drink: 'tea', sugar: 1 }, command: 'T:1:0' },
   { order: { drink: 'coffee', sugar: 2 }, command: 'C:2:0' },
 ] satisfies{order:Order, command:string} [])("$order.drink avec $order.sugar sucre(s) donne $command", ({order, command})=>{
-
+  
 
     expect(drinkMakerOrde(order)).toBe(command);
   
+})
 
+it('transmet un message au client', () => {
+  expect(toDrinkMakerMessage("Pas assez d'argent")).toBe("M:Pas assez d'argent")
 })
 })
