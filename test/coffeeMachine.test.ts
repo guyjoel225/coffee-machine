@@ -11,5 +11,14 @@ describe('Rapport des ventes', () => {
     })
   });
 
-  
+  it('compte un thé servi', () => {
+  const machine = new CoffeeMachine()
+
+  machine.order({ drink: 'tea', sugar: 0 }, 40)
+
+  expect(machine.report()).toEqual({
+    sold: { tea: 1, coffee: 0, chocolate: 0, orange: 0 },
+    total: 40,
+  })
+})
 })
